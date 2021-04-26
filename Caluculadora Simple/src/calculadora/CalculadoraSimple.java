@@ -8,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -72,10 +75,15 @@ public class CalculadoraSimple extends Application {
 		resLabel.setAlignment(Pos.CENTER);
 		resLabel.setMaxWidth(Double.POSITIVE_INFINITY);
 		resLabel.setMaxHeight(Double.POSITIVE_INFINITY);
-        resLabel.setTextFill(Color.RED);
+        resLabel.setTextFill(Color.YELLOW);
         resLabel.setFont(new Font(24.0));
-        resLabel.setStyle("-fx-font-weight:bold");
-		//Permite expandirse horizontalmente
+        resLabel.setStyle("-fx-font-weight:bold;-fx-background-color : #0000FF;");
+        
+        // Poner background con metodo setbackground es más tedioso.
+        //resLabel.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+		
+        
+        //Permite expandirse horizontalmente
 		HBox.setHgrow(resLabel, Priority.ALWAYS);
 		// Permite expandirse verticalmente.
 		VBox.setVgrow(resLabel, Priority.ALWAYS);
@@ -84,11 +92,14 @@ public class CalculadoraSimple extends Application {
 		// sus nodos hijos y un espacio de 8 respecto a su contendor.
 		VBox root = new VBox(numxPanel,numyPanel,botonesPanel,resLabel);
 		root.setSpacing(20);
+		
+		// Margen interno
 		root.setPadding( new Insets( 8,8,8,8 ) );
-		// Aplica estilo a la fuente utiizando css
+		
+		// Aplica estilo utiizando css: color y tamaño de borde
         root.setStyle("-fx-border-color:black; -fx-border-width:2px");
         
-		// Creamos la escena conteniendo el panel vertical
+		// Crea la escena conteniendo el panel vertical
 		Scene scene = new Scene(root,400,250);        
 		
 		// Asinga la escena a la ventana de la aplicación
@@ -97,7 +108,7 @@ public class CalculadoraSimple extends Application {
 		primaryStage.setTitle("Mini Calculadora");
 		
 		// Hace que la ventana no se pueda redimensionar.
-		primaryStage.setResizable(false);
+		primaryStage.setResizable(true);
 		
 		primaryStage.show();
 			
