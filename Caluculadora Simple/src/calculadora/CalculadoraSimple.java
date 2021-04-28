@@ -125,7 +125,7 @@ public class CalculadoraSimple extends Application {
 		}
 	
 		int resultado=0;
-		String operString = "x " + op + " y = ";
+		String operString = xField.getText() + " " + op + " " +  yField.getText() + " = ";
 		switch (op) {
 		case '+':
 			resultado = xValor + yValor;
